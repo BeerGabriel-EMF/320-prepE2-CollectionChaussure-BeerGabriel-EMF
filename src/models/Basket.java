@@ -1,6 +1,6 @@
 package models;
 
-public class Basket {
+public class Basket implements Comparable<Basket> {
     private String marque;
     private String nom;
     private int taille;
@@ -37,6 +37,24 @@ public class Basket {
 
     public double getPrix() {
         return prix;
+    }
+
+    @Override
+    public int compareTo(Basket b) {
+        int retour = 0;
+        if (this.taille > b.taille) {
+            retour = 1;
+        } else if (this.taille < b.taille) {
+            retour = -1;
+        } else {
+            if (this.prix > b.prix) {
+                retour = 1;
+            } else if (this.prix < b.prix) {
+                retour = -1;
+            }
+        }
+
+        return retour;
     }
 
 }
